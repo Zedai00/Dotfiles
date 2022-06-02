@@ -259,6 +259,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
 		spawnOnce "~/.wallpapers/BingWallpapers.sh &"
+		spawnOnce "~/.dotfiles/auto-push.sh &"
 		spawnOnce "picom &"
 		spawnOnce "yakuake &"
 
