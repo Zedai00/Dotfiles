@@ -1,4 +1,5 @@
 Config {
+
    -- appearance
      font =         "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
    , bgColor =      "black"
