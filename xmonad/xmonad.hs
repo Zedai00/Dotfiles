@@ -68,7 +68,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((mod1Mask,               xK_space     ), spawn "dmenu_run")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -144,6 +144,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Brightness Control
     , ((0, xF86XK_MonBrightnessUp), spawn "lux -a 10%")
     , ((0, xF86XK_MonBrightnessDown), spawn "lux -s 10%")
+
+    -- Launch Chrome
+    ,((modm, xK_c), spawn "chrome")
     ]
     ++
 
@@ -261,6 +264,7 @@ myStartupHook = do
 		spawnOnce "~/.wallpapers/BingWallpapers.sh &"
 		spawnOnce "~/.dotfiles/auto-push.sh &"
 		spawnOnce "~/.config/fish/auto-push.sh &"
+		spawnOnce "ntpd -qg && hwclock --systohc"
 		spawnOnce "picom &"
 		spawnOnce "yakuake &"
 
