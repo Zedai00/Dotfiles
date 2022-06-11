@@ -1,7 +1,0 @@
-
-xmonad.hs:264:1: warning: [-Wtabs]
-    Tab character found here, and in 10 further locations.
-    Please use spaces instead.
-    |
-264 |                 spawnOnce "~/.wallpapers/BingWallpapers.sh &"
-    | ^^^^^^^^

@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% |<action=ksysguard>%multicpu% | %coretemp% | %memory%</action> | <action=nm-connection-editor>%dynnetwork%</action> }{ <action=pavucontrol>%default:Master%</action> | %bright% | %RJTT% | %date% || %kbd% "
+   , template = "%battery% |<action=ksysguard>%multicpu% | %coretemp% | %memory%</action> }{ <action=nm-connection-editor>%dynnetwork%</action> | <action=pavucontrol>%default:Master%</action> | %bright% | %date% "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
