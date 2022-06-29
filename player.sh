@@ -1,5 +1,5 @@
 #!/bin/fish
-if test (playerctl status) = "Playing"
+if test (playerctl status 2>&1) = Playing
     set p $(playerctl metadata --format "Now Playing: {{ title }} - {{ artist }}")
     if test (string length $p) -gt 60
         set p $(playerctl metadata --format "Now Playing: {{ title }}")

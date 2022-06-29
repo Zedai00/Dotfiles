@@ -3,7 +3,7 @@
 set fish_greeting
 set VIRTUAL_ENV_DISABLE_PROMPT "1"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
-
+ 
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
@@ -11,19 +11,12 @@ set -U __done_notification_urgency_level low
 
 ## Environment setup
 # Apply .profile
-#source ~/.profile
+source ~/.profile
 
 # Add ~/.local/bin to PATH
 if test -d ~/.local/bin
     if not contains -- ~/.local/bin $PATH
         set -p PATH ~/.local/bin
-    end
-end
-
-# Add depot_tools to PATH
-if test -d ~/Applications/depot_tools
-    if not contains -- ~/Applications/depot_tools $PATH
-        set -p PATH ~/Applications/depot_tools
     end
 end
 
@@ -56,7 +49,7 @@ else
   bind '$' __history_previous_command_arguments
 end
 
-# Fish command history
+# # Fish command history
 function history
     builtin history --show-time='%F %T '
 end
@@ -65,7 +58,7 @@ function backup --argument filename
     cp $filename $filename.bak
 end
 
-# Copy DIR1 DIR2
+# # Copy DIR1 DIR2
 function copy
     set count (count $argv | tr -d \n)
     if test "$count" = 2; and test -d "$argv[1]"
@@ -77,7 +70,7 @@ function copy
     end
 end
 
-## Import colorscheme from 'wal' asynchronously
+# ## Import colorscheme from 'wal' asynchronously
 if type "wal" >> /dev/null 2>&1
    cat ~/.cache/wal/sequences
 end
@@ -120,11 +113,11 @@ alias hw='hwinfo --short'                                   # Hardware Info
 alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB (expac must be installed)
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'			# List amount of -git packages
 
-# Get fastest mirrors 
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist" 
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist" 
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist" 
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist" 
+# Get fastest mirrors
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Help people new to Arch
 alias apt='man pacman'
@@ -154,15 +147,8 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
  yt-dlp  --no-playlist --extract-audio --audio-format mp3 -o "%(title)s - %(artist)s.%(ext)s" --embed-subs --embed-thumbnail --add-metadata  '
  alias ytk='cd /Zed/Music/Korean
  yt-dlp  --no-playlist --extract-audio --audio-format mp3 -o "%(title)s - %(artist)s.%(ext)s" --embed-subs --embed-thumbnail --add-metadata  '
- set -x fish ~/.config/fish/config.fish
- set -x EDITOR nano
- alias make="make --always-make"
- alias zed="cd /Zed" 
- alias flask="python -m flask run"
- export API_KEY=pk_bb8e7d609a7d409f9775f354dfb394b6
- export FLASK_APP=application.py
+ alias zed="cd /Zed"
  alias yt='yt-dlp'
- export SECRET_KEY="b'^\xe5\xcb\xac\xd0`\x1co\x82\x97J\x8a\x81?\x00\x1a'"
  alias ac='git add -A && git commit -m'
  alias sys='sudo systemctl'
  alias syse="sudo systemctl enable"
@@ -175,7 +161,16 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
  alias syncm="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /Zed/Music/ /run/user/1000/34eb2e6729677fec/C507-19E8/Music"
  alias syncmr="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /run/user/1000/34eb2e6729677fec/C507-19E8/Music/ /Zed/Music"
  alias su="su -m"
- set -gx QT_QPA_PLATFORMTHEME qt5ct
  alias logout="kill -9 -1"
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
+ # Zed Functions
+ if pgrep yt-dlp > /dev/null
+    set -U playing true
+ else
+    set -U playing false
+ end
+ set -g async_prompt_functions _pure_prompt_git
+ set -gx QT_QPA_PLATFORMTHEME qt5ct
+ set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
+ set -x fish ~/.config/fish/config.fish
+ set -x EDITOR nano
