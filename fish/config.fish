@@ -174,3 +174,4 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
  set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
  set -x fish ~/.config/fish/config.fish
  set -x EDITOR nano
+ thefuck --alias f | source
