@@ -1,0 +1,132 @@
+Config {
+
+   -- appearance
+   font =         "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
+   ,additionalFonts = ["xft:Fira Code Nerd Font:size=13:bold:antialias=true","xft:Fira Code Nerd Font:size=16:bold:antialias=true","xft:Font Awesome 6 Free:size=14:bold:antialias=true"]
+   , bgColor =      "#4C566A"
+   , fgColor =      "#d8dee9"
+   , position =     Top
+   
+   -- layout
+   , sepChar =  "%"   -- delineator between plugin names and straight text
+   , alignSep = "}{"  -- separator between left-right alignment
+  -- , template = "<box mt=18 width=1  color=#4C566A><fc=#8fbcbb> <fn=1> </fn></fc></box> %xmobarws% <action=dolphin><fn=1> </fn></action><action=chrome><fn=1> </fn></action><action=yakuake><fn=1> </fn></action><action=firefox><fn=1> </fn></action><action=code><fn=1>﬏ </fn></action>}%playing%{<action=nm-connection-editor>%dynnetwork%</action> <box type=Right width=2><action=pavucontrol>%default:Master%</action> </box> <box type=Right width=2>%bright% </box> %date% "
+   , template = "<box mt=18 width=1  color=#4C566A><fc=#8fbcbb> <fn=1> </fn></fc></box> %xmobarws% <box type=Right width=2>%multicpu%</box><box type=HBoth width=2> %memory% </box> }%playing%{<action=nm-connection-editor>%dynnetwork%</action> <box type=Right width=2><action=pavucontrol>%default:Master%</action> </box> <box type=Right width=2>%bright% </box> %date% "
+
+   -- general behavior
+   , lowerOnStart =     True    -- send to bottom of window stack on start
+   , hideOnStart =      False   -- start with window unmapped (hidden)
+   , allDesktops =      True    -- show on all desktops
+   , overrideRedirect = False    -- set the Override Redirect flag (Xlib)
+   , pickBroadest =     False   -- choose widest display (multi-monitor)
+   , persistent =       False   -- enable/disable hiding (True = disabled)
+
+   -- plugins
+   --   Numbers can be automatically colored according to their value. xmobar
+   --   decides color based on a three-tier/two-cutoff system, controlled by
+   --   command options:
+   --     --Low sets the low cutoff
+   --     --High sets the high cutoff
+   --
+   --     --low sets the color below --Low cutoff
+   --     --normal sets the color between --Low and --High cutoffs
+   --     --High sets the color above --High cutoff
+   --
+   --   The --template option controls how the plugin is displayed. Text
+   --   color can be set by enclosing in <fc></fc> tags. For more details
+   --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
+   , commands = 
+
+        -- weather monitor
+        [ Run Weather "RJTT" [ "--template", "<skyCondition> | <fc=#4682B4><tempC></fc>°C | <fc=#4682B4><rh></fc>% | <fc=#4682B4><pressure></fc>hPa"
+                             ] 36000
+
+        -- network activity monitor (dynamic interface resolution)
+        , Run DynNetwork     [ "--template" , "<fn=1> </fn> <box type=Left width=2>  <rx>kB/s</box>|<box type=Right width=2> <tx>kB/s </box>"
+                             , "--Low"      , "1000"       -- units: B/s
+                             , "--High"     , "5000"       -- units: B/s
+                             , "--low"      , "#bf616a"
+                             , "--normal"   , "#ebcb8b"
+                             , "--high"     , "#88c0d0"
+                             ] 10
+
+        -- cpu activity monitor
+        , Run MultiCpu       [ "--template" , "<fn=3></fn> <total0>%|<total1>% "
+                             , "--Low"      , "50"         -- units: %
+                             , "--High"     , "85"         -- units: %
+                             , "--low"      , "#88c0d0"
+                             , "--normal"   , "#ebcb8b"
+                             , "--high"     , "#bf616a"
+                             ] 10
+
+        -- cpu core temperature monitor
+        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+                             , "--Low"      , "70"        -- units: °C
+                             , "--High"     , "80"        -- units: °C
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkred"
+                             ] 50
+                          
+        -- memory usage monitor
+        , Run Memory         [ "--template" ,"<fn=3></fn> <usedratio>%"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "90"        -- units: %
+                             , "--low"      , "#88c0d0"
+                             , "--normal"   , "#ebcb8b"
+                             , "--high"     , "#bf616a"
+                             ] 10
+
+        -- battery monitor
+        , Run Battery        [ "--template" , "Batt: <acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "darkred"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkgreen"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% (<timeleft>)"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                             ] 50
+
+        -- time and date indicator 
+        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
+        , Run Date           "<fn=1> </fn><fc=#d8dee9>%d-%m-%y (%a) <box type=Left width=2><fn=1> ﲊ </fn>%-I:%-M:%-S %p</box></fc>" "date" 10
+
+        -- keyboard layout indicator
+        , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
+                             , ("us"         , "<fc=#8B0000>US</fc>")
+                             ]
+
+        , Run Brightness [ "-t", "<fn=1>盛 </fn><fc=#ebcb8b><percent>%</fc>", "--", "-D", "intel_backlight" ] 60
+        
+         , Run Volume "default" "Master" [ "-t", "<fn=1> </fn><status>", "--"
+			                              , "--on", "<volume>%"
+			                              , "--onc", "#8fbcbb"
+			                              , "--off", "<fc=#BF616A><fn=1>\xf026</fn> MUTE</fc>"
+			                              , "--offc", "#BF616A"
+			                             ] 10
+
+		-- Player
+		, Run Com "fish" ["/home/zed/.dotfiles/player.sh"] "playing" 10
+
+		-- Workspaces
+		,Run Com "fish" ["/home/zed/.dotfiles/xmobarws.fish"] "xmobarws" 1
+		,Run Com "fish" ["set -U ws 1"] "1" 1
+		,Run Com "fish" ["set -U ws 2"] "2" 1
+		,Run Com "fish" ["set -U ws 3"] "3" 1
+		,Run Com "fish" ["set -U ws 4"] "4" 1
+		,Run Com "fish" ["set -U ws 5"] "5" 1
+		,Run Com "fish" ["set -U ws 6"] "6" 1
+		,Run Com "fish" ["set -U ws 7"] "7" 1
+		,Run Com "fish" ["set -U ws 8"] "8" 1
+
+		-- Mpris
+		-- ,Run Mpris2 "playerctl" ["-t", "<artist> - [<composer>] <title>"] 10
+		]
+   }
