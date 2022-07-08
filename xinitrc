@@ -39,14 +39,15 @@ fi
 
 # Zed Scripts 
 ~/.config/xmobar/brightness.sh &
-~/.dotfiles/player.sh &
+~/.dotfiles/config/xmobar/player.sh &
 echo "" | xmonadpropwrite _XM
+~/.dotfiles/autoPush.sh &
+~/.dotfiles/autoBrightness.sh &
+~/.dotfiles/wallpapers/BingWallpapers.sh
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr
 
-# Set a nice background
-feh --bg-fill --no-fehbg ~/.wallpapers/ArchLinuxNord.png
 
 # Fire up screensaver
 xscreensaver -no-splash &

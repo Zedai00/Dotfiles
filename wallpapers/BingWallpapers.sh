@@ -1,6 +1,6 @@
 #!/bin/sh
 export HOME=/home/zed
-feh --bg-fill ~/.wallpapers/sweet.jpg
+feh --bg-fill ~/.wallpapers/ArchLinuxNord.png
 urlpath=$( \
 curl "https://www.bing.com/HPImageArchive.aspx?format=rss&idx=0&n=1&mkt=en-US" \
 | xmllint --xpath "/rss/channel/item/link/text()" - \
