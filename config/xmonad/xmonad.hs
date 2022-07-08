@@ -1,45 +1,75 @@
 import XMonad
 
+import XMonad.Actions.Volume
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.EwmhDesktops
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Ungrab
+import XMonad.Util.ClickableWorkspaces
+import qualified XMonad.Util.Hacks as Hacks
+import XMonad.Util.SpawnOnce
+import qualified XMonad.Util.Brightness as Brightness
 
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Renamed
 
-import XMonad.Hooks.EwmhDesktops
 
 
 main :: IO ()
 main = xmonad
      . ewmhFullscreen
      . ewmh
-     . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
+     . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (clickablePP myXmobarPP)) defToggleStrutsKey
      $ myConfig
+
 
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
     , layoutHook = myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
+    , handleEventHook = myEventHook-- Event Hooks
+    , terminal = "konsole"
+    , startupHook = myStartupHook
     }
   `additionalKeysP`
-    [ ("M-S-z", spawn "xscreensaver-command -lock")
-    , ("M-C-s", unGrab *> spawn "scrot -s"        )
-    , ("M-f"  , spawn "firefox"                   )
+    [ ("M-S-z"     , spawn "xscreensaver-command -lock")
+    , ("M-C-s"     , unGrab *> spawn "scrot -s"        )
+    , ("M-f"       , spawn "firefox"                   )
+    , ("M-c"       , spawn "chrome"                    )
+    , ("M1-<Space>", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+    , ("M-n"       , spawn "yakuake"                   )
+    , ("<XF86AudioRaiseVolume>" , raiseVolume 5 >> return())
+    , ("<XF86AudioLowerVolume>" , lowerVolume 5 >> return())
+    , ("<XF86AudioMute>" , toggleMute >> return())
+    , ("<XF86MonBrightnessUp>"  , spawn "~/.config/xmobar/brightness.sh up"  )
+    , ("<XF86MonBrightnessDown>", spawn "~/.config/xmobar/brightness.sh down"  )
     ]
+
 
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
     , isDialog            --> doFloat
     ]
+
+
+myEventHook = do 
+    Hacks.windowedFullscreenFixEventHook
+    Hacks.trayerAboveXmobarEventHook
+
+
+myStartupHook = do
+    spawnOnce "yakuake"
+    spawnOnce "~/.config/xmobar/trayer.sh"
+
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
   where

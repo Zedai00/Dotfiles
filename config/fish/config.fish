@@ -134,9 +134,15 @@ alias jctl="journalctl -p 3 -xb"
 
 # Recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+ 
+ # Zed Functions
+ if pgrep yt-dlp > /dev/null
+    set -U playing true
+ else
+    set -U playing false
+ end    
 
-
- # Zed
+ # Zed Alias and Variables
  alias s="sudo"
  alias pkg="paru --bottomup"
  alias yay="paru --bottomup"
@@ -162,17 +168,14 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
  alias syncmr="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /run/user/1000/34eb2e6729677fec/C507-19E8/Music/ /Zed/Music"
  alias su="su -m"
  alias logout="kill -9 -1"
-
- # Zed Functions
- if pgrep yt-dlp > /dev/null
-    set -U playing true
- else
-    set -U playing false
- end
  set -g async_prompt_functions _pure_prompt_git
  set -gx QT_QPA_PLATFORMTHEME qt5ct
- set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
+ set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+ set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
  set -x fish ~/.config/fish/config.fish
  set -x EDITOR nano
- alias nv=nvim
+ alias nv="nvim"
  alias xm="xmonad --recompile; killall xmobar; xmonad --restart"
+ alias cls="clear"
+ set -x xmonadrc "/home/zed/.config/xmonad/xmonad.hs"
+ set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"

@@ -74,6 +74,16 @@ _G.packer_plugins = {
     path = "/home/zed/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["auto-pairs"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
+  },
+  ["cheatsheet.nvim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/cheatsheet.nvim",
+    url = "https://github.com/sudormrfbin/cheatsheet.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/zed/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -83,6 +93,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/zed/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["coc.nvim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
+  ["haskell-vim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/haskell-vim",
+    url = "https://github.com/neovimhaskell/haskell-vim"
   },
   ["nordic.nvim"] = {
     loaded = true,
@@ -109,15 +129,40 @@ _G.packer_plugins = {
     path = "/home/zed/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/zed/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
+  },
   ["stylua-nvim"] = {
     loaded = true,
     path = "/home/zed/.local/share/nvim/site/pack/packer/start/stylua-nvim",
     url = "https://github.com/ckipp01/stylua-nvim"
+  },
+  ["suda.vim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/suda.vim",
+    url = "https://github.com/lambdalisue/suda.vim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/zed/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-fish"] = {
     loaded = true,

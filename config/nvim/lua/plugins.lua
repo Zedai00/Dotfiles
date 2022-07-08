@@ -6,6 +6,7 @@ vim.cmd([[
   augroup end
 ]])
 return require("packer").startup(function(use)
+    use 'lambdalisue/suda.vim'
     use 'navarasu/onedark.nvim'
     use { 'sudormrfbin/cheatsheet.nvim',
         requires = {

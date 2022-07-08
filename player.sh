@@ -1,14 +1,20 @@
 #!/bin/fish
-if test (playerctl status 2>&1) = Playing
-    set p $(playerctl metadata --format "{{ title }} - {{ artist }}")
-    if test (string length $p) -gt 38
-        set p $(playerctl metadata --format "{{ title }}")
+while true
+    if test (playerctl status 2>&1) = Playing
+        set p $(playerctl metadata --format "{{ title }} - {{ artist }}")
         if test (string length $p) -gt 38
-            echo "$(string sub --length 38 $p)"
+            set p $(playerctl metadata --format "{{ title }}")
+            if test (string length $p) -gt 38
+                echo "$(string sub --length 38 $p)" | xmonadpropwrite _XM &> /dev/null
+            else
+                echo $p | xmonadpropwrite _XM &> /dev/null
+            end
         else
-            echo $p
+            echo $p | xmonadpropwrite _XM &> /dev/null
         end
     else
-        echo $p
+        if [ -n $p ]
+            echo "" | xmonadpropwrite _XM &> /dev/null
+        end
     end
 end
