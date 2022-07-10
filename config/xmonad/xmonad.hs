@@ -1,5 +1,5 @@
 import XMonad
-
+import Data.Functor
 import XMonad.Actions.Volume
 
 import XMonad.Hooks.DynamicLog
@@ -20,45 +20,53 @@ import qualified XMonad.Util.Brightness as Brightness
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Renamed
-
+import XMonad.Layout.Spacing
+import XMonad.Layout.IfMax
 
 
 main :: IO ()
 main = xmonad
      . ewmhFullscreen
      . ewmh
-     . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (clickablePP myXmobarPP)) defToggleStrutsKey
+     . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (clickablePP myXmobarPP )) defToggleStrutsKey
      $ myConfig
 
+--myXmobarSP :: PP
+--myXmobarSP = dynamicLogString def
+--    { ppOrder = \[_,l,_] -> [l]; ppOutput = \s -> spawn $ "fish -c 'set -U layout'" ++ s 
+--    }
+
+--   , logHook = dynamicLogWithPP def {ppLayout = show, ppOrder = \(_:l:_) -> [l], ppOutput = \s -> spawn $ "fish -c 'echo " ++ s ++ " > ~/.config/xmobar/layout ; ~/.config/xmobar/winCount.sh &> /dev/null & '"}}
+  
 
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
-    , layoutHook = myLayout      -- Use custom layouts
+    , layoutHook = spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True
+    $ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
     , handleEventHook = myEventHook-- Event Hooks
     , terminal = "konsole"
     , startupHook = myStartupHook
-    }
-  `additionalKeysP`
+ `additionalKeysP`
     [ ("M-S-z"     , spawn "xscreensaver-command -lock")
     , ("M-C-s"     , unGrab *> spawn "scrot -s"        )
     , ("M-f"       , spawn "firefox"                   )
     , ("M-c"       , spawn "chrome"                    )
     , ("M1-<Space>", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
     , ("M-n"       , spawn "yakuake"                   )
-    , ("<XF86AudioRaiseVolume>" , raiseVolume 5 >> return())
-    , ("<XF86AudioLowerVolume>" , lowerVolume 5 >> return())
-    , ("<XF86AudioMute>" , toggleMute >> return())
+    , ("<XF86AudioRaiseVolume>" , spawn "~/.config/xmobar/sound.sh up")
+    , ("<XF86AudioLowerVolume>" , spawn "~/.config/xmobar/sound.sh down")
+    , ("<XF86AudioMute>"        , spawn "~/.config/xmobar/sound.sh mute")
     , ("<XF86MonBrightnessUp>"  , spawn "~/.config/xmobar/brightness.sh up"  )
     , ("<XF86MonBrightnessDown>", spawn "~/.config/xmobar/brightness.sh down"  )
     ]
 
 
-myManageHook :: ManageHook
-myManageHook = composeAll
-    [ className =? "Gimp" --> doFloat
-    , isDialog            --> doFloat
-    ]
+myManageHook = do 
+    composeAll
+        [ className =? "Gimp" --> doFloat
+        , isDialog            --> doFloat
+        ]
 
 
 myEventHook = do 
@@ -67,8 +75,8 @@ myEventHook = do
 
 
 myStartupHook = do
-    spawnOnce "yakuake"
-    spawnOnce "~/.config/xmobar/trayer.sh"
+    spawn "yakuake"
+    spawn "~/.config/xmobar/trayer.sh"
 
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
@@ -87,17 +95,17 @@ myXmobarPP = def
     , ppHidden          = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras          = [logTitles formatFocused formatUnfocused]
+    , ppOrder           = \[ws, l, _] -> [ws]
+    --, ppExtras          = [logTitles formatFocused formatUnfocused]
     }
   where
-    formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
-    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+    --formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
+    --formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
 
     -- | Windows should have *some* title, which should not not exceed a
     -- sane length.
-    ppWindow :: String -> String
-    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
+    -- ppWindow :: String -> String
+    -- ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
 
     blue, lowWhite, magenta, red, white, yellow :: String -> String
     magenta  = xmobarColor "#ff79c6" ""

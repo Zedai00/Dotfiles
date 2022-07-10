@@ -4,7 +4,7 @@ Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
        , fgColor  = "#f8f8f2"
        , lowerOnStart = True
        , overrideRedirect = True
-       , position = Top
+       , position = Static { xpos = 20 , ypos = 5, width = 1325, height = 20 }
        , commands = [ Run Date "%a %d-%m-%Y <fc=#8be9fd>%I:%M:%S %p</fc>" "date" 10
                     , Run UnsafeXMonadLog
                     , Run Com "/home/zed/.config/xmobar/padding-icon.sh" [""] "trayerpad" 10

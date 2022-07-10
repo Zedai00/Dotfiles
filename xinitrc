@@ -44,6 +44,7 @@ echo "" | xmonadpropwrite _XM
 ~/.dotfiles/autoPush.sh &
 ~/.dotfiles/autoBrightness.sh &
 ~/.dotfiles/wallpapers/BingWallpapers.sh
+~/.config/xmobar/sound.sh &
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr
@@ -57,6 +58,6 @@ if [ -x /usr/bin/nm-applet ] ; then
    nm-applet --sm-disable &
 fi
 
-exec $HOME/.cache/xmonad/xmonad-x86_64-linux
+exec $HOME/.cache/xmonad/xmonad-x86_64-linux 2> ~/.xsession-errors
 
 #bottles-cli run -b Games -p GTAIV

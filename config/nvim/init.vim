@@ -5,8 +5,9 @@ set expandtab
 set smartindent
 set shiftwidth=4
 set number
+
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
+"" unicode characters in the file autoload/float.vim
 set encoding=utf-8
 
 " TextEdit might fail if hidden is not set.

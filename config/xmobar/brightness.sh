@@ -9,7 +9,7 @@
 
 function get_bright
     set br (math round (xbacklight -get))
-    echo $br% | xmonadpropwrite _BRIGHT
+    echo $br% | xmonadpropwrite _BRIGHT &> /dev/null
 end
 
 switch $argv
