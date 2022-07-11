@@ -47,6 +47,9 @@ myConfig = def
     , ("<XF86AudioRaiseVolume>" , spawn "sound up")
     , ("<XF86AudioLowerVolume>" , spawn "sound down")
     , ("<XF86AudioMute>"        , spawn "sound mute")
+    , ("<XF86AudioPlay>"        , spawn "playerctl play-pause")
+    , ("<XF86AudioPrev>"        , spawn "playerctl previous")
+    , ("<XF86AudioNext>"        , spawn "playerctl next")
     , ("<XF86MonBrightnessUp>"  , spawn "brightness up")
     , ("<XF86MonBrightnessDown>", spawn "brightness down")
     ]
