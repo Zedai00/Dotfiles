@@ -44,11 +44,11 @@ myConfig = def
     , ("M-c"       , spawn "chrome"                    )
     , ("M1-<Space>", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
     , ("M-n"       , spawn "yakuake"                   )
-    , ("<XF86AudioRaiseVolume>" , spawn "~/.config/xmobar/sound.sh up")
-    , ("<XF86AudioLowerVolume>" , spawn "~/.config/xmobar/sound.sh down")
-    , ("<XF86AudioMute>"        , spawn "~/.config/xmobar/sound.sh mute")
-    , ("<XF86MonBrightnessUp>"  , spawn "~/.config/xmobar/brightness.sh up")
-    , ("<XF86MonBrightnessDown>", spawn "~/.config/xmobar/brightness.sh down")
+    , ("<XF86AudioRaiseVolume>" , spawn "sound up")
+    , ("<XF86AudioLowerVolume>" , spawn "sound down")
+    , ("<XF86AudioMute>"        , spawn "sound mute")
+    , ("<XF86MonBrightnessUp>"  , spawn "brightness up")
+    , ("<XF86MonBrightnessDown>", spawn "brightness down")
     ]
 
 
