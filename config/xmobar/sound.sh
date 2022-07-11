@@ -20,7 +20,7 @@ switch $argv
         pactl set-sink-volume 0 -5%
         get_sound 
     case "mute"
-        if set -q mute
+        if string match "*yes*" (pactl get-sink-mute 0)
             pactl set-sink-mute 0 toggle
             get_sound "unmute"
             set -e mute
