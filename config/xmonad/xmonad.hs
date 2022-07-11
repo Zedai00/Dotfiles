@@ -70,6 +70,8 @@ myEventHook = do
 myStartupHook = do
     spawnOnce "yakuake"
     spawnOnce "~/.config/xmobar/trayer.sh"
+    spawnOnce "mailspring -b"
+    spawnOnce "~/.dotfiles/autoPush.sh"
 
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
