@@ -17,9 +17,9 @@ function get_sound
     get_bar
     echo $argv
     if test (count $argv) -lt 2 -a "$argv[1]" = "mute"
-            echo "<fn=1>ﱝ </fn>$br" | xmonadpropwrite _SOUND &> /dev/null
+            echo "<fn=1>ﱝ </fn>$sound" | xmonadpropwrite _SOUND &> /dev/null
     else
-        echo "<fn=1>墳 </fn>$br" | xmonadpropwrite _SOUND &> /dev/null
+        echo "<fn=1>墳 </fn>$sound" | xmonadpropwrite _SOUND &> /dev/null
     end
 end
 
