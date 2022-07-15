@@ -9,7 +9,13 @@
 
 function get_bright
     set br (math round (xbacklight -get))
-    echo $br% | xmonadpropwrite _BRIGHT &> /dev/null
+    if [ $br -gt 99 ]
+        echo "$br%" | xmonadpropwrite _BRIGHT &> /dev/null
+    else if [ $br -lt 100 ] 
+        echo "$br% " | xmonadpropwrite _BRIGHT &> /dev/null
+    else if [ $br -lt 10 ]
+        echo " $br% " | xmonadpropwrite _BRIGHT &> /dev/null
+    end
 end
 
 switch $argv
