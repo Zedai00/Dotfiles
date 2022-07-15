@@ -12,7 +12,7 @@ function get_bright
     if [ $br -gt 99 ]
         echo "$br%" | xmonadpropwrite _BRIGHT &> /dev/null
     else if [ $br -gt 9 ] 
-        echo "$br% " | xmonadpropwrite _BRIGHT &> /dev/null
+        echo " $br%" | xmonadpropwrite _BRIGHT &> /dev/null
     else
         echo " $br% " | xmonadpropwrite _BRIGHT &> /dev/null
     end
