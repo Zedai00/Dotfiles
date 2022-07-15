@@ -7,7 +7,7 @@ function get_bar
     if [ $br -gt 99 ]
         set -gx sound "$br"
     else if [ $br -gt 9 ]
-        set -gx sound "$br"
+        set -gx sound "$br "
     else
         set -gx sound "$br"
     end
