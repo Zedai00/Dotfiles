@@ -3,7 +3,7 @@
 
 
 function get_bar
-    set br (amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'
+    set br (amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }')
     if [ $br -gt 99 ]
         set -gx sound "$br"
     else if [ $br -gt 9 ]
@@ -14,8 +14,7 @@ function get_bar
 end
 
 function get_sound
-    set br (amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'
-)   
+    get_bar
     echo $argv
     if test (count $argv) -lt 2 -a "$argv[1]" = "mute"
             echo "<fn=1>ﱝ </fn>$br" | xmonadpropwrite _SOUND &> /dev/null
