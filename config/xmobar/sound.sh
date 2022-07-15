@@ -3,30 +3,30 @@
 
 function get_sound
     set br (amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'
-)   
+)
     echo $argv
-    if test (count $argv) -lt 2 -a "$argv[1]" = "mute"
-            echo "<fn=1>ﱝ </fn>$br" | xmonadpropwrite _SOUND &> /dev/null
+    if test (count $argv) -lt 2 -a "$argv[1]" = mute
+        echo "<fn=1>ﱝ </fn>$br" | xmonadpropwrite _SOUND &>/dev/null
     else
-        echo "<fn=1>墳 </fn>$br" | xmonadpropwrite _SOUND &> /dev/null
+        echo "<fn=1>墳 </fn>$br" | xmonadpropwrite _SOUND &>/dev/null
     end
 end
 
 switch $argv
-    case "up"
+    case up
         pactl set-sink-volume 0 +5%
-        get_sound 
-    case "down"
+        get_sound
+    case down
         pactl set-sink-volume 0 -5%
-        get_sound 
-    case "mute"
+        get_sound
+    case mute
         if string match "*yes*" (pactl get-sink-mute 0)
             pactl set-sink-mute 0 toggle
-            get_sound "unmute"
+            get_sound unmute
             set -e mute
         else
             pactl set-sink-mute 0 toggle
-            get_sound "mute"
+            get_sound mute
             set -U mute 0%
         end
     case "*"
