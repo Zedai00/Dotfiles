@@ -5,11 +5,11 @@
 function get_bar
     set br (amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print substr($2, 1, length($2)-1) }')
     if [ $br -gt 99 ]
-        set -gx sound "$br"
+        set -gx sound "$br%"
     else if [ $br -gt 9 ]
-        set -gx sound " $br"
+        set -gx sound " $br%"
     else
-        set -gx sound " $br "
+        set -gx sound " $br% "
     end
 end
 
