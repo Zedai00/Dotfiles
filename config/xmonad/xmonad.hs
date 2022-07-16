@@ -1,5 +1,9 @@
 import XMonad
 
+
+import XMonad.Actions.Minimize
+
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -18,7 +22,8 @@ import qualified XMonad.Util.Brightness as Brightness
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Renamed
-
+import XMonad.Layout.Minimize
+import qualified XMonad.Layout.BoringWindows as BW
 
 
 main :: IO ()
@@ -31,7 +36,7 @@ main = xmonad
 
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
-    , layoutHook = myLayout      -- Use custom layouts
+    , layoutHook = minimize . Bw.boringWindows $ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
     , handleEventHook = myEventHook-- Event Hooks
     , terminal = "konsole"
@@ -44,9 +49,11 @@ myConfig = def
     , ("M-c"       , spawn "chrome"                    )
     , ("M1-<Space>", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
     , ("M-n"       , spawn "yakuake"                   )
-    , ("<XF86AudioRaiseVolume>" , spawn "sound up")
-    , ("<XF86AudioLowerVolume>" , spawn "sound down")
-    , ("<XF86AudioMute>"        , spawn "sound mute")
+    , ("M-m"       , withFocused minimizeWindows       )
+    , ("M-S-m"     , withLastMinimized maximizeWindowsAndFocus )
+    , ("<XF86AudioRaiseVolume>" , spawn "sound up"     )
+    , ("<XF86AudioLowerVolume>" , spawn "sound down"   )
+    , ("<XF86AudioMute>"        , spawn "sound mute"   )
     , ("<XF86AudioPlay>"        , spawn "playerctl play-pause")
     , ("<XF86AudioPrev>"        , spawn "playerctl previous")
     , ("<XF86AudioNext>"        , spawn "playerctl next")
