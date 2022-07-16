@@ -36,7 +36,7 @@ main = xmonad
 
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
-    , layoutHook = minimize . Bw.boringWindows $ myLayout      -- Use custom layouts
+    , layoutHook = minimize . BW.boringWindows $ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
     , handleEventHook = myEventHook-- Event Hooks
     , terminal = "konsole"
