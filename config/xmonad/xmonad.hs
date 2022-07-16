@@ -1,1 +1,0 @@
-/home/zed/.dotfiles/config/xmonad/xmonad.hs
