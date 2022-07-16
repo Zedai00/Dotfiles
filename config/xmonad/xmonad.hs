@@ -11,6 +11,7 @@ import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
 
+
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Ungrab
@@ -18,6 +19,7 @@ import XMonad.Util.ClickableWorkspaces
 import qualified XMonad.Util.Hacks as Hacks
 import XMonad.Util.SpawnOnce
 import qualified XMonad.Util.Brightness as Brightness
+
 
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
