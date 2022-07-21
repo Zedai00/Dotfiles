@@ -7,6 +7,7 @@ vim.cmd([[
 ]])
 return require("packer").startup(function(use)
     -- Lua
+    use "Pocco81/AutoSave.nvim"
     use {
         "folke/which-key.nvim",
         config = function()
