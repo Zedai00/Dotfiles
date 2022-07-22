@@ -5,11 +5,6 @@ require('onedark').setup {
 require('onedark').load()
 
 
-        },
-        write_all_buffers = false,
-        on_off_commands = true,
-        clean_command_line_interval = 0,
-        debounce_delay = 135
     }
 -----------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
