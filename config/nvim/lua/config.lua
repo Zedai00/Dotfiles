@@ -5,7 +5,6 @@ require('onedark').setup {
 require('onedark').load()
 
 
-    }
 -----------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
