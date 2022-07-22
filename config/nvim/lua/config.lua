@@ -23,6 +23,8 @@ vim.g.mapleader = ','
 -----------------------------------------------------------
 -- Neovim shortcuts
 -----------------------------------------------------------
+-- Map leader: to :
+map('n', '<leader>:', ":")
 
 -- Map Esc to kk
 map('i', 'kk', '<Esc>')
@@ -53,8 +55,8 @@ map('n', '<leader>s', ':w<CR>')
 map('i', '<leader>s', '<C-c>:w<CR>')
 
 -- Close all windows and exit from Neovim with <leader> and q
-map('n', '<leader>q', ':qa!<CR>')
-
+map('n', '<leader>qa', ':qa!<CR>')
+map('n', '<leader>q',  ':q!<CR>')
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
