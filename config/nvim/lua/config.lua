@@ -5,7 +5,6 @@ require('onedark').setup {
 require('onedark').load()
 
 
-local autosave = require("autosave")
 
 autosave.setup(
     {
