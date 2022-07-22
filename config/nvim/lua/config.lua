@@ -23,7 +23,6 @@ autosave.setup(
         clean_command_line_interval = 0,
         debounce_delay = 135
     }
-)
 -----------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
