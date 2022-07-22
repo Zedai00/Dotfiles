@@ -5,11 +5,6 @@ require('onedark').setup {
 require('onedark').load()
 
 
-        enabled = true,
-        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
-        events = {"InsertLeave", "TextChanged"},
-        conditions = {
-            exists = true,
             filename_is_not = {},
             filetype_is_not = {},
             modifiable = true
