@@ -25,7 +25,7 @@ vim.g.mapleader = ','
 -----------------------------------------------------------
 -- Map leader: to :
 map('n', '<leader>:', ":")
-map('n' '<leader>!', ":!")
+map('n', '<leader>!', ":!")
 
 -- Map Esc to kk
 map('i', 'kk', '<Esc>')
