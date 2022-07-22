@@ -25,6 +25,7 @@ vim.g.mapleader = ','
 -----------------------------------------------------------
 -- Map leader: to :
 map('n', '<leader>:', ":")
+map('n' '<leader>!', ":!")
 
 -- Map Esc to kk
 map('i', 'kk', '<Esc>')
@@ -62,7 +63,7 @@ map('n', '<leader>q',  ':q!<CR>')
 -----------------------------------------------------------
 
 -- Terminal mappings
-map('n', '<C-t>', ':sp | term<CR>', { noremap = true })  -- open
+map('n', '<leader>t', ':sp | term<CR>', { noremap = true })  -- open
 map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
 
 -- NvimTree
