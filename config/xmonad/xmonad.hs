@@ -81,6 +81,7 @@ myStartupHook = do
     spawnOnce "~/.config/xmobar/trayer.sh"
     spawnOnce "mailspring -b"
     spawnOnce "~/.dotfiles/autoPush.sh"
+    spawnOnce "indicator-kdeconnect"
 
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
