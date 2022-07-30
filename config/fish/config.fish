@@ -179,3 +179,4 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
  alias cls="clear"
  set -x xmonadrc "/home/zed/.config/xmonad/xmonad.hs"
  set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"
+ thefuck --alias f | source
