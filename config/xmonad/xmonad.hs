@@ -61,6 +61,7 @@ myConfig = def
     , ("<XF86AudioNext>"        , spawn "playerctl next")
     , ("<XF86MonBrightnessUp>"  , spawn "brightness up")
     , ("<XF86MonBrightnessDown>", spawn "brightness down")
+    , ("<Print>"   , spawn "flameshot launcher")
     ]
 
 
