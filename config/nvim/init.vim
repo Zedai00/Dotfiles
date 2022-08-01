@@ -183,3 +183,5 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 autocmd FileType scss setl iskeyword+=@-@
+
+let g:vimspector_enable_mapping = 'HUMAN'
