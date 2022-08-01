@@ -6,10 +6,11 @@ vim.cmd([[
   augroup end
 ]])
 return require("packer").startup(function(use)
+    use 'puremourning/vimspector'
     -- Lua
-    use "Pocco81/AutoSave.nvim"
+    use 'Pocco81/AutoSave.nvim'
     use {
-        "folke/which-key.nvim",
+        'folke/which-key.nvim',
         config = function()
             require("which-key").setup {
                 -- your configuration comes here
