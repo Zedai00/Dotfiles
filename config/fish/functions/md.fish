@@ -1,4 +1,4 @@
 function md
-mkdir $args
-cd $args
+mkdir $argv
+cd $argv
 end
