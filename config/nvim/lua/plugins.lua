@@ -7,6 +7,7 @@ vim.cmd([[
 ]])
 return require("packer").startup(function(use)
     use 'puremourning/vimspector'
+    use 'lukas-reineke/lsp-format.nvim'
     -- Lua
     use 'Pocco81/AutoSave.nvim'
     use {
