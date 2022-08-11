@@ -165,3 +165,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 autocmd FileType scss setl iskeyword+=@-@
 
 let g:vimspector_enable_mapping = 'HUMAN'
+
+autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+
