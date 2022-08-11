@@ -83,6 +83,8 @@ myStartupHook = do
     spawnOnce "mailspring -b"
     spawnOnce "~/.dotfiles/autoPush.sh"
     spawnOnce "indicator-kdeconnect"
+    spawnOnce "discord"
+    spawnOnce "premid"
 
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
