@@ -8,14 +8,14 @@ Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
        , commands = [ Run Date "%a %d-%m-%Y <fc=#8be9fd>%I:%M:%S %p</fc>" "date" 10
                     , Run UnsafeXMonadLog
                     , Run Com "/home/zed/.config/xmobar/padding-icon.sh" [""] "trayerpad" 10
-                    , Run Brightness [ "-t", "Br: <percent>%", "--", "-D", "intel_backlight" ] 60
+                    , Run Brightness [ "-t", "<percent>%", "--", "-D", "intel_backlight" ] 60
                     , Run XPropertyLog "_XM"
                     , Run Volume "default" "Master"
                         [ "-t", "<status>", "--"
-                        , "--on", "<fc=#859900><fn=1>\xf028</fn> <volume>%</fc>"
-                        , "--onc", "#859900"
-                        , "--off", "<fc=#dc322f><fn=1>\xf026</fn> MUTE</fc>"
-                        , "--offc", "#dc322f"
+                        , "--on", "<fn=1>\xf028</fn> <volume>%"
+                        , "--onc", ""
+                        , "--off", "<fn=1>\xf026</fn> MUTE"
+                        , "--offc", ""
                         ] 10
                     ]
        , sepChar  = "%"
