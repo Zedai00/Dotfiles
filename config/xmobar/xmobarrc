@@ -10,10 +10,16 @@ Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
                     , Run Com "/home/zed/.config/xmobar/padding-icon.sh" [""] "trayerpad" 10
                     , Run Brightness [ "-t", "Br: <percent>%", "--", "-D", "intel_backlight" ] 60
                     , Run XPropertyLog "_XM"
-                    , Run XPropertyLog "_SOUND"
+                    , Run Volume "default" "Master"
+                        [ "-t", "<status>", "--"
+                        , "--on", "<fc=#859900><fn=1>\xf028</fn> <volume>%</fc>"
+                        , "--onc", "#859900"
+                        , "--off", "<fc=#dc322f><fn=1>\xf026</fn> MUTE</fc>"
+                        , "--offc", "#dc322f"
+                        ] 10
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%UnsafeXMonadLog% }%_XM%{ %trayerpad% | <action=pavucontrol>%_SOUND%</action> | <fn=1>盛 </fn>%bright% | %date% " }
+       , template = "%UnsafeXMonadLog% }%_XM%{ %trayerpad% | <action=pavucontrol>%default:Master%</action> | <fn=1>盛 </fn>%bright% | %date% " }
 
 
