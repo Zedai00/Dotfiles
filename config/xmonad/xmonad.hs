@@ -83,7 +83,7 @@ myStartupHook = do
     spawnOnce "mailspring -b"
     spawnOnce "~/.dotfiles/autoPush.sh"
     spawnOnce "indicator-kdeconnect"
-    spawnOnce "discord"
+    spawnOnce "discord --start-minimized"
     spawnOnce "premid"
     spawnOnce "clight-gui --tray"
 
