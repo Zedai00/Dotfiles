@@ -8,12 +8,12 @@ Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
        , commands = [ Run Date "%a %d-%m-%Y <fc=#8be9fd>%I:%M:%S %p</fc>" "date" 10
                     , Run UnsafeXMonadLog
                     , Run Com "/home/zed/.config/xmobar/padding-icon.sh" [""] "trayerpad" 10
-                    , Run XPropertyLog "_BRIGHT"
+                    , Run Brightness [ "-t", "Br: <percent>%", "--", "-D", "intel_backlight" ] 60
                     , Run XPropertyLog "_XM"
                     , Run XPropertyLog "_SOUND"
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%UnsafeXMonadLog% }%_XM%{ %trayerpad% | <action=pavucontrol>%_SOUND%</action> | <fn=1>盛 </fn>%_BRIGHT% | %date% " }
+       , template = "%UnsafeXMonadLog% }%_XM%{ %trayerpad% | <action=pavucontrol>%_SOUND%</action> | <fn=1>盛 </fn>%bright% | %date% " }
 
 
