@@ -85,6 +85,7 @@ myStartupHook = do
     spawnOnce "indicator-kdeconnect"
     spawnOnce "discord"
     spawnOnce "premid"
+    spawnOnce "clight"
 
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
