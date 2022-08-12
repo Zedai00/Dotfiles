@@ -85,7 +85,7 @@ myStartupHook = do
     spawnOnce "indicator-kdeconnect"
     spawnOnce "discord"
     spawnOnce "premid"
-    spawnOnce "clight"
+    spawnOnce "clight-gui --tray"
 
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
