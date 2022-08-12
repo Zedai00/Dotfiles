@@ -13,9 +13,9 @@ Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
                     , Run Volume "default" "Master"
                         [ "-t", "<status>", "--"
                         , "--on", "<fn=1>\xf028</fn> <volume>%"
-                        , "--onc", "#859900"
+                        , "--onc", "#f8f8f2"
                         , "--off", "<fn=1>\xf026</fn> MUTE"
-                        , "--offc", "#dc322f"
+                        , "--offc", "#f8f8f2"
                         ] 10
                     ]
        , sepChar  = "%"
