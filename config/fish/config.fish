@@ -183,4 +183,3 @@ set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"
 thefuck --alias f | source
 alias py="python"
 alias cmd="command"
-nd=neovide
