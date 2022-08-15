@@ -181,3 +181,4 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
  set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"
  thefuck --alias f | source
  alias py="python"
+ alias cmd="command"
