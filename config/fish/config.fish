@@ -1,9 +1,9 @@
 ﻿## Set values
 # Hide welcome message
 set fish_greeting
-set VIRTUAL_ENV_DISABLE_PROMPT "1"
+set VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
- 
+
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
@@ -23,30 +23,31 @@ end
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
-  switch (commandline -t)
-  case "!"
-    commandline -t $history[1]; commandline -f repaint
-  case "*"
-    commandline -i !
-  end
+    switch (commandline -t)
+        case "!"
+            commandline -t $history[1]
+            commandline -f repaint
+        case "*"
+            commandline -i !
+    end
 end
 
 function __history_previous_command_arguments
-  switch (commandline -t)
-  case "!"
-    commandline -t ""
-    commandline -f history-token-search-backward
-  case "*"
-    commandline -i '$'
-  end
+    switch (commandline -t)
+        case "!"
+            commandline -t ""
+            commandline -f history-token-search-backward
+        case "*"
+            commandline -i '$'
+    end
 end
 
-if [ "$fish_key_bindings" = fish_vi_key_bindings ];
-  bind -Minsert ! __history_previous_command
-  bind -Minsert '$' __history_previous_command_arguments
+if [ "$fish_key_bindings" = fish_vi_key_bindings ]
+    bind -Minsert ! __history_previous_command
+    bind -Minsert '$' __history_previous_command_arguments
 else
-  bind ! __history_previous_command
-  bind '$' __history_previous_command_arguments
+    bind ! __history_previous_command
+    bind '$' __history_previous_command_arguments
 end
 
 # # Fish command history
@@ -62,8 +63,8 @@ end
 function copy
     set count (count $argv | tr -d \n)
     if test "$count" = 2; and test -d "$argv[1]"
-	set from (echo $argv[1] | trim-right /)
-	set to (echo $argv[2])
+        set from (echo $argv[1] | trim-right /)
+        set to (echo $argv[2])
         command cp -r $from $to
     else
         command cp $argv
@@ -71,18 +72,18 @@ function copy
 end
 
 # ## Import colorscheme from 'wal' asynchronously
-if type "wal" >> /dev/null 2>&1
-   cat ~/.cache/wal/sequences
+if type wal >>/dev/null 2>&1
+    cat ~/.cache/wal/sequences
 end
 
 ## Useful aliases
 # Replace ls with exa
 alias l='exa -al --color=always --group-directories-first --icons'
 alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
-alias la='exa -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first --icons'  # long format
+alias la='exa -a --color=always --group-directories-first --icons' # all files and dirs
+alias ll='exa -l --color=always --group-directories-first --icons' # long format
 alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
-alias l.="exa -a | egrep '^\.'"                                     # show only dotfiles
+alias l.="exa -a | egrep '^\.'" # show only dotfiles
 
 # Replace some more things with better alternatives
 alias cat='bat --style header --style rules --style snip --style changes --style header'
@@ -109,9 +110,9 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias hw='hwinfo --short'                                   # Hardware Info
-alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB (expac must be installed)
-alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'			# List amount of -git packages
+alias hw='hwinfo --short' # Hardware Info
+alias big="expac -H M '%m\t%n' | sort -h | nl" # Sort installed packages according to size in MB (expac must be installed)
+alias gitpkg='pacman -Q | grep -i "\-git" | wc -l' # List amount of -git packages
 
 # Get fastest mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
@@ -134,51 +135,51 @@ alias jctl="journalctl -p 3 -xb"
 
 # Recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
- 
- # Zed Functions
- if pgrep yt-dlp > /dev/null
-    set -U playing true
- else
-    set -U playing false
- end    
 
- # Zed Alias and Variables
- alias s="sudo"
- alias pkg="paru --bottomup"
- alias yay="paru --bottomup"
- alias paru="paru --bottomup"
- alias yt4='cd /Zed/Music/4KVideoDownloader
+# Zed Functions
+if pgrep yt-dlp >/dev/null
+    set -U playing true
+else
+    set -U playing false
+end
+
+# Zed Alias and Variables
+alias s="sudo"
+alias pkg="paru --bottomup"
+alias yay="paru --bottomup"
+alias paru="paru --bottomup"
+alias yt4='cd /Zed/Music/4KVideoDownloader
  yt-dlp  --no-playlist --extract-audio --audio-format mp3 -o "%(title)s - %(artist)s.%(ext)s" --embed-subs --embed-thumbnail --add-metadata  '
- alias yth='cd /Zed/Music/Hindi
+alias yth='cd /Zed/Music/Hindi
  yt-dlp  --no-playlist --extract-audio --audio-format mp3 -o "%(title)s - %(artist)s.%(ext)s" --embed-subs --embed-thumbnail --add-metadata  '
- alias ytk='cd /Zed/Music/Korean
+alias ytk='cd /Zed/Music/Korean
  yt-dlp  --no-playlist --extract-audio --audio-format mp3 -o "%(title)s - %(artist)s.%(ext)s" --embed-subs --embed-thumbnail --add-metadata  '
- alias zed="cd /Zed"
- alias yt='yt-dlp'
- alias ac='git add -A && git commit -m'
- alias sys='sudo systemctl'
- alias syse="sudo systemctl enable"
- alias syss="sudo systemctl start"
- alias sysp="sudo systemctl stop"
- alias sysr="sudo systemctl restart"
- alias sysd="sudo systemctl disable"
- alias syst="sudo systemctl status"
- alias less="less -r"
- alias syncm="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /Zed/Music/ /run/user/1000/34eb2e6729677fec/C507-19E8/Music"
- alias syncmr="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /run/user/1000/34eb2e6729677fec/C507-19E8/Music/ /Zed/Music"
- alias su="su -m"
- alias logout="kill -9 -1"
- set -g async_prompt_functions _pure_prompt_git
- set -gx QT_QPA_PLATFORMTHEME qt5ct
- set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
- set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
- set -x fish ~/.config/fish/config.fish
- set -x EDITOR nano
- alias nv="nvim"
- alias xm="xmonad --recompile; killall xmobar; xmonad --restart"
- alias cls="clear"
- set -x xmonadrc "/home/zed/.config/xmonad/xmonad.hs"
- set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"
- thefuck --alias f | source
- alias py="python"
- alias cmd="command"
+alias zed="cd /Zed"
+alias yt='yt-dlp'
+alias ac='git add -A && git commit -m'
+alias sys='sudo systemctl'
+alias syse="sudo systemctl enable"
+alias syss="sudo systemctl start"
+alias sysp="sudo systemctl stop"
+alias sysr="sudo systemctl restart"
+alias sysd="sudo systemctl disable"
+alias syst="sudo systemctl status"
+alias less="less -r"
+alias syncm="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /Zed/Music/ /run/user/1000/34eb2e6729677fec/C507-19E8/Music"
+alias syncmr="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /run/user/1000/34eb2e6729677fec/C507-19E8/Music/ /Zed/Music"
+alias su="su -m"
+alias logout="kill -9 -1"
+set -g async_prompt_functions _pure_prompt_git
+set -gx QT_QPA_PLATFORMTHEME qt5ct
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
+set -x fish ~/.config/fish/config.fish
+set -x EDITOR nano
+alias nv="nvim"
+alias xm="xmonad --recompile; killall xmobar; xmonad --restart"
+alias cls="clear"
+set -x xmonadrc "/home/zed/.config/xmonad/xmonad.hs"
+set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"
+thefuck --alias f | source
+alias py="python"
+alias cmd="command"
