@@ -49,7 +49,7 @@ myConfig = def
     , ("M-C-s"     , unGrab *> spawn "scrot -s"        )
     , ("M-f"       , spawn "firefox"                   )
     , ("M-c"       , spawn "chrome"                    )
-    , ("M1-<Space>", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+    , ("M1-<Space>", spawn "exe=`dmenu_path | dmenu_run_history` && eval \"exec $exe\"")
     , ("M-n"       , spawn "yakuake"                   )
     , ("M-m"       , withFocused minimizeWindow        )
     , ("M-S-m"     , withLastMinimized maximizeWindowAndFocus )
