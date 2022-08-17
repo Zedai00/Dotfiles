@@ -1,0 +1,26 @@
+Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
+       , additionalFonts = ["xft:Fira Code Nerd Font:bold:antialias=true"]
+       , bgColor  = "#5f5f5f"
+       , fgColor  = "#f8f8f2"
+       , lowerOnStart = True
+       , overrideRedirect = True
+       , position = Top
+       , commands = [ Run Date "%a %d-%m-%Y %I:%M:%S %p" "date" 10
+                    , Run UnsafeXMonadLog
+                    , Run Com "/home/zed/.config/xmobar/padding-icon.sh" [""] "trayerpad" 10
+                    , Run Brightness [ "-t", "<percent>%", "--", "-D", "intel_backlight" ] 60
+                    , Run XPropertyLog "_XM"
+                    , Run Volume "default" "Master"
+                        [ "-t", "<status>", "--"
+                        , "--on", "<fn=1>\xf028 </fn><volume>%"
+                        , "--onc", "#f8f8f2"
+                        , "--off", "<fn=1>\xf026</fn> MUTE"
+                        , "--offc", "#f8f8f2"
+                        ] 10 
+                        , Run Battery [ "-t", "<fn=1></fn> <left>% / <timeleft>" ] 60
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeXMonadLog% | %trayerpad% }%_XM%{ <action=pavucontrol>%default:Master%</action> | <action=clight-gui><fn=1>盛 </fn>%bright%</action> | %date% | %battery% " }
+
+
