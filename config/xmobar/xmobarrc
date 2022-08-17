@@ -20,9 +20,9 @@ Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
                      , Run Battery        [ "--template" , "Batt: <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
+                             , "--low"      , "#f8f8f2"
+                             , "--normal"   , "#f8f8f2"
+                             , "--high"     , "#f8f8f2"
 
                              , "--" -- battery specific options
                                        -- discharging status
