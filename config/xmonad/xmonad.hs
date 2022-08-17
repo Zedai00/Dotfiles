@@ -11,7 +11,6 @@ import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
 
-
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Ungrab
