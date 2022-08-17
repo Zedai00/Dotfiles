@@ -35,6 +35,6 @@ Config { font     = "xft:Fira Code Nerd Font:size=9:bold:antialias=true"
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%UnsafeXMonadLog% }%_XM%{ %trayerpad% | <action=pavucontrol>%default:Master%</action> | <action=clight-gui><fn=1>盛 </fn>%bright%</action> | %date% " }
+       , template = "%UnsafeXMonadLog% }%_XM%{ %trayerpad% | <action=pavucontrol>%default:Master%</action> | <action=clight-gui><fn=1>盛 </fn>%bright%</action> | %date% | %battery% " }
 
 
