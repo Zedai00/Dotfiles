@@ -78,6 +78,7 @@ myEventHook = do
 
 myStartupHook = do
     spawnOnce "yakuake"
+    spawnOnce "xfce4-power-manager"
     spawnOnce "~/.config/xmobar/trayer.sh"
     spawnOnce "mailspring -b"
     spawnOnce "~/.dotfiles/autoPush.sh"
