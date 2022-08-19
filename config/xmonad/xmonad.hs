@@ -84,7 +84,6 @@ myStartupHook = do
     spawnOnce "indicator-kdeconnect"
     spawnOnce "discord --start-minimized"
     spawnOnce "premid"
-    spawnOnce "clight-gui --tray"
 
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
