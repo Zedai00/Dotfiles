@@ -1,3 +1,3 @@
 function player
-~/.dotfiles/config/xmobar/player.sh 
+string replace -a '"' '\"' (~/.dotfiles/config/sway/player.sh)
 end

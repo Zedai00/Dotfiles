@@ -180,7 +180,6 @@ alias xm="xmonad --recompile; killall xmobar; xmonad --restart"
 alias cls="clear"
 set -x xmonadrc "/home/zed/.config/xmonad/xmonad.hs"
 set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"
-thefuck --alias f | source
 alias py="python"
 alias cmd="command"
 alias nd="neovide"

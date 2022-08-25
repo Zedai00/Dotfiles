@@ -3,7 +3,6 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-set $sway ~/.config/sway/
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -23,7 +22,8 @@ set $menu dmenu_path | dmenu_run | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+exec ~/.config/sway/BingWallpapers.sh 
 #
 # Example configuration:
 #
@@ -35,7 +35,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-exec $sway/lock.sh
+exec ~/.config/sway/lock.sh
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -68,7 +68,7 @@ default_border none
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+Shift+c kill
 
     # Start your launcher
     bindsym Mod1+Space exec $menu
@@ -100,7 +100,7 @@ default_border none
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+q reload
 
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -223,22 +223,27 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
+    font pango:MesloLGS NF 10 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
     status_command ~/.config/sway/mybar.sh 
     
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        statusline #ECEFF4
+        background #434C5E
+        separator #ECEFF4
+        focused_workspace #4C566A #4C566A #ECEFF4
+
+
+        inactive_workspace #434C5E  #434C5E #ECEFF4
     }
 }
 
 # AutoStart
 exec foot -a dropdown
 exec wtype -M alt n
-
+exec dunst
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
