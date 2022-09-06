@@ -1,4 +1,10 @@
 ﻿## Set values
+set SDL_VIDEODRIVER wayland
+set _JAVA_AWT_WM_NONREPARENTING 1
+set QT_QPA_PLATFORM wayland
+set XDG_CURRENT_DESKTOP sway
+set XDG_SESSION_DESKTOP sway
+
 # Hide welcome message
 set fish_greeting
 set VIRTUAL_ENV_DISABLE_PROMPT 1
@@ -169,17 +175,11 @@ alias syncm="rsync -avu --delete --inplace --verbose --progress --recursive --om
 alias syncmr="rsync -avu --delete --inplace --verbose --progress --recursive --omit-dir-times --no-perms /run/user/1000/34eb2e6729677fec/C507-19E8/Music/ /Zed/Music"
 alias su="su -m"
 alias logout="kill -9 -1"
-set -g async_prompt_functions _pure_prompt_git
 set -gx QT_QPA_PLATFORMTHEME qt5ct
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
-set -gx PATH $HOME/.cabal/bin /home/zed/.ghcup/bin $PATH # ghcup-env
 set -x fish ~/.config/fish/config.fish
 set -x EDITOR nano
 alias nv="nvim"
-alias xm="xmonad --recompile; killall xmobar; xmonad --restart"
 alias cls="clear"
-set -x xmonadrc "/home/zed/.config/xmonad/xmonad.hs"
-set -x xmobarrc "/home/zed/.config/xmobar/xmobarrc"
 alias py="python"
 alias cmd="command"
 alias nd="neovide"

@@ -17,7 +17,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu_run | xargs swaymsg exec --
+set $menu dmenu_path | dmenu_run -nb '#434C5E' -sf '#ECEFF4' -sb '#4C566A' -nf '#ECEFF4' -fn "MesloLGS NF-10" -h '26'  | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -43,6 +43,7 @@ exec ~/.config/sway/lock.sh
 
 ### Window Configuration
 default_border none
+for_window [app_id="flameshot"] floating enable
 
 ### Input configuration
 #
@@ -91,6 +92,10 @@ default_border none
     # Applications
     bindsym $mod+c exec chrome
     bindsym Mod1+Shift+n exec foot -a dropdown 
+
+    # Print
+    bindsym Print exec flameshot launcher
+    
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -245,5 +250,9 @@ exec foot -a dropdown
 exec wtype -M alt n
 exec dunst
 
+# ENV
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
