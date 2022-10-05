@@ -4,6 +4,7 @@ set _JAVA_AWT_WM_NONREPARENTING 1
 set QT_QPA_PLATFORM wayland
 set XDG_CURRENT_DESKTOP sway
 set XDG_SESSION_DESKTOP sway
+set EDITOR lvim
 
 # Hide welcome message
 set fish_greeting
@@ -176,10 +177,13 @@ alias syncmr="rsync -avu --delete --inplace --verbose --progress --recursive --o
 alias su="su -m"
 alias logout="kill -9 -1"
 set -gx QT_QPA_PLATFORMTHEME qt5ct
-set -x fish ~/.config/fish/config.fish 
-alias nv="nvim"
-alias vim="nvim"
+set -x fish ~/.config/fish/config.fish
+set -x EDITOR nano
+alias nv="lvim"
+alias nvim="lvim"
+alias vim="lvim"
 alias cls="clear"
 alias py="python"
 alias cmd="command"
+alias nd="neovide"
 
