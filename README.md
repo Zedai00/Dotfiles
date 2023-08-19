@@ -1,3 +1,3 @@
 # Dotfiles
-My Dotfiles 
-Includes: XMonad, XMobar, NeoVim, etc
+My Dotfiles For ArchWSL 
+Includes: Fish, NeoVim
