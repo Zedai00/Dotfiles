@@ -182,4 +182,3 @@ alias vim="nvim"
 alias cls="clear"
 alias py="python"
 alias cmd="command"
-
