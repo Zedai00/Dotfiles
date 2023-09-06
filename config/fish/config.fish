@@ -182,3 +182,4 @@ alias vim="nvim"
 alias cls="clear"
 alias py="python"
 alias cmd="command"
+start /home/zed/.dotfiles/autoPush.sh
