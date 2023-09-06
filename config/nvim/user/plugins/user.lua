@@ -9,4 +9,13 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  {
+    "Pocco81/auto-save.nvim",
+    event = "User AstroFile",
+    config = function()
+        require("auto-save").setup{
+          
+        }
+      end,
+  }
 }
