@@ -81,5 +81,10 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-  end,
+    vim.filetype.add {
+      extension = {
+        asm = "nasm"
+      },
+    }
+      end,
 }
