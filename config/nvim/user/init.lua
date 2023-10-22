@@ -83,8 +83,8 @@ return {
     -- }
     vim.filetype.add {
       extension = {
-        asm = "nasm"
+        asm = "nasm",
       },
     }
-      end,
+  end,
 }

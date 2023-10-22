@@ -33,9 +33,12 @@ return {
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
+  i = {
+    ["kk"] = { "<C-\\><C-n><S-a>;<cr>" },
+  },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
-    ["jj"] = {"<C-\\><C-n>"};
+    ["jj"] = { "<C-\\><C-n>" },
   },
 }

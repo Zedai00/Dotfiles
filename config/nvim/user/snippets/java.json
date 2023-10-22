@@ -1,0 +1,19 @@
+{
+  "Scanner": {
+    "prefix": "scn",
+    "body": [
+      "Scanner sc = new Scanner(System.in);"
+    ],
+    "description": "Take Input By Scanner"
+  },
+  "Print": {
+    "prefix": [
+      "print",
+      "sysp"
+    ],
+    "body": [
+      "System.out.print($0);"
+    ],
+    "description": "Print Method"
+  }
+}

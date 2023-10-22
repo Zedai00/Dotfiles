@@ -84,7 +84,7 @@ end
 
 ## Useful aliases
 # Replace ls with exa
-alias l='exa -al --color=always --group-directories-first --icons'
+alias l='exa -a --color=always --group-directories-first --icons' # all files and dirs
 alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
 alias la='exa -a --color=always --group-directories-first --icons' # all files and dirs
 alias ll='exa -l --color=always --group-directories-first --icons' # long format
@@ -182,3 +182,4 @@ alias vim="nvim"
 alias cls="clear"
 alias py="python"
 alias cmd="command"
+alias java='CLASSPATH="/Zed/Programming/Java/OOPS/" cmd java'
