@@ -14,4 +14,9 @@ return {
   --   event = "User AstroFile",
   --   config = function() require("auto-save").setup {} end,
   -- },
+  {
+    "LhKipp/nvim-nu",
+    ft = "nu",
+    config = function() require("nu").setup {} end,
+  },
 }

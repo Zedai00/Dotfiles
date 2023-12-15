@@ -179,7 +179,7 @@ set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -x fish ~/.config/fish/config.fish 
 alias nv="nvim"
 alias vim="nvim"
+alias vi="nvim"
 alias cls="clear"
 alias py="python"
 alias cmd="command"
-alias java='CLASSPATH="/Zed/Programming/Java/OOPS/" cmd java'

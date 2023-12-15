@@ -20,7 +20,7 @@
     "prefix": "ainp",
     "body": [
       "Scanner sc = new Scanner(System.in);",
-      "System.out.print(\"Enter Array Elements: \");",
+      "System.out.print(\"Enter Array Length: \");",
       "int n = sc.nextInt();",
       "System.out.print(\"Enter Array Elements: \");",
       "int[] a = new int[n];",
