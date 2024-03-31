@@ -9,7 +9,7 @@ alias l='exa -a --color=always --group-directories-first --icons' # all files an
 alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
 alias la='exa -a --color=always --group-directories-first --icons' # all files and dirs
 alias ll='exa -l --color=always --group-directories-first --icons' # long format
-alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
+alias llt='exa -aT --color=always --group-directories-first --icons' # tree listing
 alias l.="exa -a | egrep '^\.'" # show only dotfiles
 
 # Replace some more things with better alternatives
@@ -98,3 +98,11 @@ alias cls="clear"
 alias py="python"
 alias cmd="command"
 alias man="batman"
+alias open="wslview"
+set -x GOPATH /home/zed/.go
+set -x GOMODCACHE /home/zed/.go/pkg/mod
+
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

@@ -31,6 +31,9 @@ return {
       clangd = {
         capabilities = { offsetEncoding = "utf-8" },
       },
+      -- sqlls = {
+      --   root_dir = function() return vim.loop.cwd() end,
+      -- },
     },
     -- customize lsp formatting options
     formatting = {
@@ -47,8 +50,9 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
+        "sqls",
       },
-      timeout_ms = 1000, -- default format timeout
+      timeout_ms = 10000, -- default format timeout
       filter = function(client) -- fully override the default formatting function
         if vim.fn.expand "%:t" == "AsciiArt.java" then
           return false

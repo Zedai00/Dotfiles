@@ -35,6 +35,7 @@ return {
   },
   i = {
     ["kk"] = { "<C-\\><C-n><S-a>;<cr>" },
+    ["kl"] = { "<C-\\><C-n>la" },
   },
   t = {
     -- setting a mapping to false will disable it
