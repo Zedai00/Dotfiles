@@ -183,3 +183,4 @@ alias cls="clear"
 alias py="python"
 alias cmd="command"
 alias du="du -h"
+set QT_STYLE_OVERRIDE kvantum
