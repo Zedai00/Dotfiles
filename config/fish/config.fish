@@ -15,9 +15,6 @@ set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
 
 
-## Environment setup
-# Apply .profile
-source ~/.profile
 
 # Add ~/.local/bin to PATH
 if test -d ~/.local/bin
@@ -184,3 +181,4 @@ alias py="python"
 alias cmd="command"
 alias du="du -h"
 set QT_STYLE_OVERRIDE kvantum
+alias ffmpeg="ffmpeg-bar"

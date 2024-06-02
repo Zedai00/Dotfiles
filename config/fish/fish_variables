@@ -53,7 +53,9 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d434c5e
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/zed/\x2elocal/bin\x1e/home/zed/\x2ecargo/bin
+SETUVAR fish_user_paths:/opt/android\x2dsdk/platform\x2dtools\x1e/home/zed/\x2elocal/share/nvm/v22\x2e2\x2e0/bin\x1e/home/zed/\x2elocal/bin\x1e/home/zed/\x2ecargo/bin
+SETUVAR link:\x1d
+SETUVAR play:true
 SETUVAR playing:false
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
@@ -100,3 +102,4 @@ SETUVAR pure_symbol_prompt:\u276f
 SETUVAR pure_symbol_reverse_prompt:\u276e
 SETUVAR pure_symbol_title_bar_separator:\x2d
 SETUVAR pure_threshold_command_duration:5
+SETUVAR track:1
