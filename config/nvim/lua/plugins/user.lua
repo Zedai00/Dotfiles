@@ -1,8 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- You can also add or configure plugins by creating files in this `plugins/` folder
--- Here are some examples:
-
 ---@type LazySpec
 return {
 
@@ -81,5 +76,94 @@ return {
         Rule("a", "a", "-vim")
       )
     end,
+  },
+
+  {
+    "AstroNvim/astrocommunity",
+    { import = "astrocommunity.pack.lua" },
+    { import = "astrocommunity.pack.html-css" },
+    { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+    { import = "astrocommunity.color.transparent-nvim" },
+  },
+
+  {
+    "AstroNvim/astroui",
+    ---@type AstroUIOpts
+    opts = {
+      colorscheme = "tokyonight-moon",
+      status = {
+        colors = {
+          fg = "none",
+          bg = "none",
+          section_fg = "none",
+          section_bg = "none",
+          git_branch_fg = "none",
+          treesitter_fg = "none",
+          scrollbar = "none",
+          git_added = "none",
+          git_changed = "none",
+          git_removed = "none",
+          diag_ERROR = "none",
+          diag_WARN = "none",
+          diag_INFO = "none",
+          diag_HINT = "none",
+          winbar_fg = "none",
+          winbar_bg = "none",
+          winbarnc_fg = "none",
+          winbarnc_bg = "none",
+          tabline_bg = "none",
+          tabline_fg = "none",
+          buffer_fg = "none",
+          buffer_path_fg = "none",
+          buffer_close_fg = "none",
+          buffer_bg = "none",
+          buffer_active_fg = "none",
+          buffer_active_path_fg = "none",
+          buffer_active_close_fg = "none",
+          buffer_active_bg = "none",
+          buffer_visible_fg = "none",
+          buffer_visible_path_fg = "none",
+          buffer_visible_close_fg = "none",
+          buffer_visible_bg = "none",
+          buffer_overflow_fg = "none",
+          buffer_overflow_bg = "none",
+          buffer_picker_fg = "none",
+          tab_close_fg = "none",
+          tab_close_bg = "none",
+          tab_fg = "none",
+          tab_bg = "none",
+          tab_active_fg = "none",
+          tab_active_bg = "none",
+          inactive = "none",
+          normal = "none",
+          insert = "none",
+          visual = "none",
+          replace = "none",
+          command = "none",
+          terminal = "none",
+        },
+      },
+    },
+  },
+
+  {
+    "AstroNvim/astrocore",
+    ---@type AstroCoreOpts
+    opts = {
+      mappings = {
+        i = {
+          ["jj"] = { "<esc>" },
+          ["jk"] = { "<esc>la" },
+        },
+        t = {
+          ["jj"] = { "<C-\\><C-n>" },
+        },
+      },
+      options = {
+        opt = {
+          wrap = true,
+        },
+      },
+    },
   },
 }
