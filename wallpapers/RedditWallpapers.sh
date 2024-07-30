@@ -6,4 +6,4 @@ end
 if pgrep swaybg > /dev/null
       killall swaybg
 end
-swaybg -i wall
+start swaybg -i wall

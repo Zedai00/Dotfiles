@@ -181,3 +181,6 @@ alias py="python"
 alias cmd="command"
 alias du="du -h"
 set QT_STYLE_OVERRIDE kvantum
+
+starship init fish | source
+set STARSHIP_LOG error
