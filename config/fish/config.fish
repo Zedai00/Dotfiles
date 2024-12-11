@@ -184,3 +184,5 @@ set QT_STYLE_OVERRIDE kvantum
 
 starship init fish | source
 set STARSHIP_LOG error
+
+fish_add_path /home/zed/.spicetify
