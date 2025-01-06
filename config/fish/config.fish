@@ -4,6 +4,7 @@ set _JAVA_AWT_WM_NONREPARENTING 1
 set QT_QPA_PLATFORM wayland
 set XDG_CURRENT_DESKTOP sway
 set XDG_SESSION_DESKTOP sway
+set JAVA_HOME /usr/lib/jvm/default/
 
 # Hide welcome message
 set fish_greeting
