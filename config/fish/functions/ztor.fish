@@ -1,0 +1,3 @@
+function ztor
+proxychains4 ssh u0_a217@u5y277hqe4jrdcwjg6d4vohbtrgjez3ajpuohje4o74q7z52zsq6tkyd.onion
+end
