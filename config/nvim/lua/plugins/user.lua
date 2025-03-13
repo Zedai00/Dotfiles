@@ -1,19 +1,29 @@
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
+-- You can also add or configure plugins by creating files in this `plugins/` folder
+-- Here are some examples:
+
 ---@type LazySpec
 return {
-
   {
-    "wthollingsworth/pomodoro.nvim",
-    requires = "MunifTanjim/nui.nvim",
+    "sudormrfbin/cheatsheet.nvim",
+
+    requires = {
+      { "nvim-telescope/telescope.nvim" },
+      { "nvim-lua/popup.nvim" },
+      { "nvim-lua/plenary.nvim" },
+    },
+  },
+  {
+    "Pocco81/auto-save.nvim",
+    event = "InsertEnter",
     config = function()
-      require("pomodoro").setup {
-        time_work = 45,
-        time_break_short = 10,
-        time_break_long = 20,
-        timers_to_long_break = 4,
+      require("auto-save").setup {
+        -- your config goes here
+        -- or just leave it empty :)
       }
     end,
   },
-
   -- == Examples of Adding Plugins ==
 
   "andweeb/presence.nvim",
@@ -48,7 +58,7 @@ return {
   },
 
   -- You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = false },
+  -- { "max397574/better-escape.nvim", enabled = false },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {

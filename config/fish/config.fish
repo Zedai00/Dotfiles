@@ -86,7 +86,7 @@ alias l='exa -al --color=always --group-directories-first --icons'
 alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
 alias la='exa -a --color=always --group-directories-first --icons' # all files and dirs
 alias ll='exa -l --color=always --group-directories-first --icons' # long format
-alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
+# alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
 alias l.="exa -a | egrep '^\.'" # show only dotfiles
 
 # Replace some more things with better alternatives
@@ -160,7 +160,6 @@ alias ytk='cd /Zed/Music/Korean
  yt-dlp  --no-playlist --extract-audio --audio-format mp3 -o "%(title)s - %(artist)s.%(ext)s" --embed-subs --embed-thumbnail --add-metadata  '
 alias zed="cd /Zed"
 alias yt='yt-dlp'
-alias ac='git add -A && git commit -m'
 alias sys='sudo systemctl'
 alias syse="sudo systemctl enable"
 alias syss="sudo systemctl start"
@@ -181,9 +180,11 @@ alias cls="clear"
 alias py="python"
 alias cmd="command"
 alias du="du -h"
+set termtor "u0_a217@u5y277hqe4jrdcwjg6d4vohbtrgjez3ajpuohje4o74q7z52zsq6tkyd.onion"
 set QT_STYLE_OVERRIDE kvantum
 
 starship init fish | source
 set STARSHIP_LOG error
 
 fish_add_path /home/zed/.spicetify
+set LFS "/mnt/lfs"
