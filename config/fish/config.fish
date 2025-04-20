@@ -188,3 +188,6 @@ set STARSHIP_LOG error
 
 fish_add_path /home/zed/.spicetify
 set LFS "/mnt/lfs"
+
+set LIBVIRT_DEFAULT_URI "qemu:///system"
+set -gx ELECTRON_OZONE_PLATFORM_HINT auto
